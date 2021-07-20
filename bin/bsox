@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 # batch sox 
 
 indir=""
@@ -54,7 +54,7 @@ for infile in $filelist
 do
     cmd="sox $infile_opt $indir/$infile $outfile_opt $outdir/$infile $effect_opt"
     echo $cmd
-    `$cmd`
+    # `$cmd`
 done
 
 
