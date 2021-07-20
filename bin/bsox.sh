@@ -8,33 +8,31 @@ outfile_opt=""
 effect_opt=""
 status="in"
 
-
-if [ "$#" -lt 3 ]; then
+if [[ "$#" -lt 3 ]]; then
     echo "The number of parameters should be more than 2"
     exit 1
 fi
 
 
-
 # parse args
 for opt in "$@"
 do
-    if [ "$status" -eq "in" ]; then
+    if [[ "$status" == "in" ]]; then
         if [ ! -d "$opt" ]; then
             infile_opt="${infile_opt} ${opt}"
         else
             indir=${opt}
             status="out"
         fi
-    elif [ "$status" -eq "out" ]; then
-        if [ ! -d "$opt" ]; then
+    elif [[ "$status" == "out" ]]; then
+        if [[ ! -d "$opt" ]]; then
             outfile_opt="${infile_opt} ${opt}"
         else
             outdir=${opt}
             status="effect"
         fi
     else
-        if [ ! -d "$opt" ]; then
+        if [[ ! -d "$opt" ]]; then
             effect_opt="${effect_opt} ${opt}"
         else
             echo "Usage"
@@ -44,7 +42,7 @@ do
 done
 
 
-if [ -z $indir ] || [ -z $outdir]; then
+if [[ -z $indir ]] || [[ -z $outdir ]]; then
     echo "Usage"
     exit 1
 fi
@@ -56,7 +54,7 @@ for infile in $filelist
 do
     cmd="sox $infile_opt $indir/$infile $outfile_opt $outdir/$infile $effect_opt"
     echo $cmd
-    # `$cmd`
+    `$cmd`
 done
 
 
