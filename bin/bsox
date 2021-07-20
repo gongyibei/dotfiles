@@ -19,14 +19,14 @@ fi
 # parse args
 for opt in "$@"
 do
-    if [ "$status" == "in" ]; then
+    if [ "$status" -eq "in" ]; then
         if [ ! -d "$opt" ]; then
             infile_opt="${infile_opt} ${opt}"
         else
             indir=${opt}
             status="out"
         fi
-    elif [ "$status" == "out" ]; then
+    elif [ "$status" -eq "out" ]; then
         if [ ! -d "$opt" ]; then
             outfile_opt="${infile_opt} ${opt}"
         else
