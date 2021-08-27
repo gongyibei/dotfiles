@@ -1,4 +1,7 @@
 common_aliases () {
+    # dotfiles
+    alias cdd='cd ~/.dotfiles/'
+
     # blog
     alias wb='cd ~/blog/source/_posts/;nvim .'
     alias db='cd ~/blog/source/_posts/; ./cp_img.sh; cd ~/blog; hexo g; hexo d;cd -'
