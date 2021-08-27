@@ -79,26 +79,27 @@ check_project(){
 
 setup_config(){
     # zshrc
-    cp zsh/.zshrc ~
-	cp_file_if_exists zsh/.zsh_profile ~
+    ln -s zsh/zshrc.zsh ~/.zshrc
+
+	# sts zsh/.zsh_profile ~
 
     # nvim
-    mkdir -p ~/.config/nvim && cp neovim/init.vim ~/.config/nvim
+    # mkdir -p ~/.config/nvim && cp neovim/init.vim ~/.config/nvim
 
-	# git
-    cp_file_if_exists git/.gitconfig ~
-	cp_file_if_exists git/.gitmessage ~
-	cp_file_if_exists git/.git-credentials ~
+	# # git
+    # cp_file_if_exists git/.gitconfig ~
+	# cp_file_if_exists git/.gitmessage ~
+	# cp_file_if_exists git/.git-credentials ~
 
-	# ssh
-	cp_file_if_exists ssh/config ~/.ssh
+	# # ssh
+	# cp_file_if_exists ssh/config ~/.ssh
 
-	# conda
-	cp_file_if_exists conda/.condarc ~
-	cp_file_if_exists -r .pip ~
+	# # conda
+	# cp_file_if_exists conda/.condarc ~
+	# cp_file_if_exists -r .pip ~
 
-    # tmux
-    cp_file_if_exists tmux/.tmux.conf ~
+    # # tmux
+    # cp_file_if_exists tmux/.tmux.conf ~
 }
 
 main(){
