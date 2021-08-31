@@ -25,4 +25,3 @@ elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
 then
 	linux_install
 fi
-

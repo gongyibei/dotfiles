@@ -24,9 +24,6 @@ common_aliases () {
     alias ez='ranger ~/.dotfiles/zsh/'
     alias sz='source ~/.zshrc'
 
-    # git
-    alias gacp='git add .;git commit -m "auto commit";git push origin master'
-
     # leetcode
     alias lgp='leetcode show -gex -l python3'
     alias lgg='leetcode show -gex -l golang'
