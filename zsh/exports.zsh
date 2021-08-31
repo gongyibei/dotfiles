@@ -1,6 +1,3 @@
-# oh-my-zsh path
-export ZSH=~/.oh-my-zsh
-
 # my personal script
 export PATH=~/.dotfiles/bin/:$PATH
 

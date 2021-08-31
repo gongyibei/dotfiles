@@ -15,6 +15,8 @@ if [[ -d ~/.zplug ]]; then
     zplug 'zsh-users/zsh-completions', defer:2
     zplug 'zsh-users/zsh-history-substring-search'
     zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+    zplug "plugins/vi-mode", from:oh-my-zsh
+    # zplug "jeffreytse/zsh-vi-mode"
     
     if ! zplug check; then
       zplug install

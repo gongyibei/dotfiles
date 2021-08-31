@@ -79,7 +79,7 @@ check_project(){
 
 setup_config(){
     # zshrc
-    ln -s zsh/zshrc.zsh ~/.zshrc
+    ln -s ~/.dotfiles/zsh/zshrc.zsh ~/.zshrc
 
 	# sts zsh/.zsh_profile ~
 
