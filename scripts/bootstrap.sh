@@ -81,6 +81,9 @@ setup_config(){
     # zshrc
     ln -s ~/.dotfiles/zsh/zshrc.zsh ~/.zshrc
 
+    # tmux 
+    ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+
 	# sts zsh/.zsh_profile ~
 
     # nvim
