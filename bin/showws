@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ $# == 1 ]]; then
+    ffmpeg -loglevel quiet -i "$1" -lavfi "showwavespic=s=1080x240" tmp1.png
+    ffmpeg -loglevel quiet -i "$1" -lavfi "showspectrumpic=s=1080x240:legend=false" tmp2.png
+elif [[ $# == 2 ]]; then
+    ffmpeg -loglevel quiet -to "$2" -i "$1" -lavfi "showwavespic=s=1080x240" tmp1.png
+    ffmpeg -loglevel quiet -to "$2" -i "$1" -lavfi "showspectrumpic=s=1080x240:legend=false" tmp2.png
+elif [[ $# == 3 ]]; then
+    ffmpeg -loglevel quiet -ss "$2" -t "$3" -i "$1" -lavfi "showwavespic=s=1080x240" tmp1.png
+    ffmpeg -loglevel quiet -ss "$2" -t "$3" -i "$1" -lavfi "showspectrumpic=s=1080x240:legend=false" tmp2.png
+fi
+
+imgcat tmp1.png
+imgcat tmp2.png
+rm ./tmp1.png ./tmp2.png

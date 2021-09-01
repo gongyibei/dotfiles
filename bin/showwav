@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ $# == 1 ]]; then
+    ffmpeg -loglevel quiet -i "$1" -lavfi "showwavespic=s=1080x240" tmp.png
+elif [[ $# == 2 ]]; then
+    ffmpeg -loglevel quiet -t "$2" -i "$1" -lavfi "showwavespic=s=1080x240" tmp.png
+elif [[ $# == 3 ]]; then
+    ffmpeg -loglevel quiet -ss "$2" -t "$3" -i "$1" -lavfi "showwavespic=s=1080x240" tmp.png
+fi
+
+imgcat tmp.png
+rm ./tmp.png

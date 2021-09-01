@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ $# == 1 ]]; then
+    echo 1
+    ffmpeg -loglevel quiet -i "$1" -lavfi "showspectrumpic=s=1080x240" tmp.png
+elif [[ $# == 2 ]]; then
+    echo 2
+    ffmpeg -loglevel quiet -to "$2" -i "$1" -lavfi "showspectrumpic=s=1080x240" tmp.png
+elif [[ $# == 3 ]]; then
+    echo 3
+    ffmpeg -loglevel quiet -ss "$2" -t "$3" -i "$1" -lavfi "showspectrumpic=s=1080x240" tmp.png
+fi
+
+
+imgcat tmp.png
+rm ./tmp.png
