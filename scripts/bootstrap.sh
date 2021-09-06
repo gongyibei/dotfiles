@@ -94,6 +94,9 @@ setup_config(){
     dump_and_ln ~/.dotfiles/ranger/rifle.conf ~/.config/ranger/rifle.conf
     dump_and_ln ~/.dotfiles/ranger/scope.sh ~/.config/ranger/scope.sh
 
+    # nim 
+    dump_and_ln ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+
 	# sts zsh/.zsh_profile ~
 
     # nvim
