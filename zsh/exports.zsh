@@ -1,5 +1,6 @@
 # my personal script
 export PATH=~/.dotfiles/bin/:$PATH
+export PATH=~/.iterm2/:$PATH
 
 # homebrew mirror
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
@@ -9,3 +10,6 @@ export GOOGLE_APPLICATION_CREDENTIALS=/Users/swdy/Applications/google-cloud-sdk/
 
 # language
 export LC_ALL=en_US.UTF-8
+
+# editor
+export EDITOR=nvim

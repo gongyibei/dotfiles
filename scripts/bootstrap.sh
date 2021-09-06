@@ -77,12 +77,22 @@ check_project(){
     cd $PROJECT_PATH
 }
 
+dump_and_ln(){
+    mv $2 $2.bak 
+    ln -s $1 $2
+}
+
 setup_config(){
     # zshrc
-    ln -s ~/.dotfiles/zsh/zshrc.zsh ~/.zshrc
+    dump_and_ln ~/.dotfiles/zsh/zshrc.zsh ~/.zshrc
 
     # tmux 
-    ln -s ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+    dump_and_ln ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+
+    # ranger
+    dump_and_ln ~/.dotfiles/ranger/rc.conf ~/.config/ranger/rc.conf
+    dump_and_ln ~/.dotfiles/ranger/rifle.conf ~/.config/ranger/rifle.conf
+    dump_and_ln ~/.dotfiles/ranger/scope.sh ~/.config/ranger/scope.sh
 
 	# sts zsh/.zsh_profile ~
 
