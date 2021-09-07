@@ -44,8 +44,10 @@ common_aliases () {
     alias cman='man -M /usr/local/share/man/zh_CN'
     alias cnt='ls -lR| grep "^-" | wc -l'
     # alias cat="highlight $1 --out-format xterm256 -l --force -s pablo --no-trailing-nl"
+    # 127前面不要加 https://
     alias ss="export http_proxy=127.0.0.1:1087 https_proxy=127.0.0.1:1087"
     alias uss="unset http_proxy https_proxy"
+
     alias downgit="curl https://raw.githubusercontent.com/${0}" 
 
     # thefuck
