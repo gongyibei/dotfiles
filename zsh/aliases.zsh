@@ -2,6 +2,7 @@ common_aliases () {
     # dotfiles
     alias cdd='cd ~/.dotfiles/'
     alias eb='ranger ~/.dotfiles/bin/'
+    alias ed='ranger ~/.dotfiles/'
 
     # blog
     alias wb='cd ~/blog/source/_posts/;nvim .'
@@ -49,6 +50,11 @@ common_aliases () {
     alias uss="unset http_proxy https_proxy"
 
     alias downgit="curl https://raw.githubusercontent.com/${0}" 
+
+    alias cntfile='ls -l | grep "^-" | wc -l'
+    alias cntfiles='ls -lR| grep "^-" | wc -l'
+    alias cntdir='ls -l | grep "^d" | wc -l'
+    alias cntdirs='ls -lR| grep "^d" | wc -l'
 
     # thefuck
     eval $(thefuck --alias)
