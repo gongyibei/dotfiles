@@ -31,13 +31,6 @@ Plug 'luochen1990/rainbow'
 Plug 'rbgrouleff/bclose.vim'
 " Plug 'francoiscabrol/ranger.vim'
 
-"Plug 'w0rp/ale'
-"Plug 'deoplete-plugins/deoplete-jedi'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'davidhalter/jedi-vim'
-"Plug 'Valloric/YouCompleteMe '
-" Plug 'ncm2/ncm2'
-" Plug 'ncm2/ncm2-jedi'
 " 自动补全括号
 Plug 'jiangmiao/auto-pairs'
 "Plug 'sillybun/vim-autodoc'
@@ -45,7 +38,7 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'google/yapf' 
 Plug 'timothycrosley/isort'
 Plug 'heavenshell/vim-pydocstring'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 " Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
@@ -68,6 +61,8 @@ Plug 'voldikss/vim-translator'
 " Plug 'xuhdev/vim-latex-live-preview'
 " Plug 'vim-python/python-syntax'
 Plug 'rizzatti/dash.vim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end() 
 
@@ -201,8 +196,8 @@ call plug#end()
     nnoremap <leader>q :q<cr>
     "nnoremap <leader>z :wq<cr>
     
-    map <LEADER>p <Esc>/<++><CR>:nohlsearch<CR>4s
-    inoremap <C-p> <++>
+    " map <LEADER>p <Esc>/<++><CR>:nohlsearch<CR>4s
+    " inoremap <C-p> <++>
 " }}}
 
 " Terminal {{{
@@ -372,14 +367,14 @@ call plug#end()
 " }}}
 
 " supertab{{{
-    let g:SuperTabDefaultCompletionType = "context"
-    let g:jedi#popup_on_dot = 0
+    " let g:SuperTabDefaultCompletionType = "context"
+    " let g:jedi#popup_on_dot = 0
     " let g:SuperTabClosePreviewOnPopupClose = 1
 " }}}
 
 
 " jedi {{{
-    let g:jedi#completions_command = "<C-N>"
+    " let g:jedi#completions_command = "<C-N>"
 " }}}
 
 " nerdcommenter {{{

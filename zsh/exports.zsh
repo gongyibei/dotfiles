@@ -13,3 +13,6 @@ export LC_ALL=en_US.UTF-8
 
 # editor
 export EDITOR=nvim
+
+export NEMU_HOME=/space/Project/ics2021/nemu
+export AM_HOME=/space/Project/ics2021/abstract-machine

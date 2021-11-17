@@ -1,0 +1,3 @@
+#!/bin/bash
+sox --multi-thread -S -r 16000 -b 16 -t raw  -c 1 -e signed-integer $1 ${1%.pcm}.wav
+

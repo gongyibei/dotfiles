@@ -1,6 +1,7 @@
 #!/bin/bash
 # batch sox 
 
+
 indir=""
 outdir=""
 infile_opt=""
@@ -32,12 +33,12 @@ do
             status="effect"
         fi
     else
-        if [[ ! -d "$opt" ]]; then
-            effect_opt="${effect_opt} ${opt}"
-        else
-            echo "Usage"
-            exit 1
-        fi
+        # if [[ ! -d "$opt" ]]; then
+        effect_opt="${effect_opt} ${opt}"
+        # else
+        #     echo "Usage"
+        #     exit 1
+        # fi
     fi
 done
 
@@ -54,5 +55,5 @@ for infile in $filelist
 do
     cmd="sox $infile_opt $indir/$infile $outfile_opt $outdir/$infile $effect_opt"
     echo $cmd
-    # `$cmd`
+    `$cmd`
 done

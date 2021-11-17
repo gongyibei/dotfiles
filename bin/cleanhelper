@@ -1,0 +1,170 @@
+#!/home/gyk/anaconda3/bin/python
+import sounddevice as sd
+import scipy.io.wavfile as wav
+import os
+import curses
+import pickle
+import sys
+
+curses.initscr()
+curses.noecho()
+
+class Win:
+    origin_win = curses.newwin(curses.LINES, curses.COLS, 0, 0)
+
+    def __init__(self, hei, wid, y, x):
+        self.win = self.origin_win.subwin(hei, wid, y, x)
+        self.hei = hei
+        self.wid = wid
+        self.y = y
+        self.x = x
+
+    def build(self):
+        pass
+
+    def refresh(self, *args, **kwargs):
+        self.win.refresh(*args, **kwargs)
+
+    def draw(self):
+        self.erase()
+        self.build()
+        self.refresh()
+
+    def addstr(self, *args, **kwargs):
+        return self.win.addstr(*args, **kwargs)
+
+    def attron(self, *args, **kwargs):
+        return self.win.attron(*args, **kwargs)
+
+    def getch(self, *args, **kwargs):
+        return self.win.getch(*args, **kwargs)
+
+    def getkey(self, *args, **kwargs):
+        return self.win.getkey(*args, **kwargs)
+
+    def erase(self, *args, **kwargs):
+        return self.win.erase(*args, **kwargs)
+
+    def box(self, *args, **kwargs):
+        return self.win.box(*args, **kwargs)
+
+win = Win(curses.LINES, curses.COLS, 0, 0)
+
+class CleanHelper:
+    def __init__(self, target_dir):
+        self.target_dir = target_dir
+        parent_dir, base_name = os.path.split(target_dir)
+
+        trash_dir = os.path.join(parent_dir, 'trash')
+        if not os.path.exists(trash_dir):
+            os.mkdir(trash_dir)
+
+        self.trash_dir = os.path.join(trash_dir, f'{base_name}')
+        if not os.path.exists(self.trash_dir):
+            os.mkdir(self.trash_dir)
+
+        self.files = [f for f in os.listdir(target_dir) if f.endswith('.wav')]
+        self.cur_idx = -1
+
+        self.key = None
+
+    def play(self):
+        cur_file = self.files[self.cur_idx]
+        cur_file_path = os.path.join(self.target_dir, cur_file)
+
+        if os.path.exists(cur_file_path):
+            fs, data = wav.read(cur_file_path)
+            sd.play(data, fs)
+
+    def stop(self):
+        sd.stop()
+
+    def exit(self):
+        curses.echo()
+        curses.nocbreak()
+        curses.endwin()
+
+    def delete(self):
+        self.stop()
+
+        cur_file = self.files.pop(self.cur_idx)
+        self.cur_idx = min(len(self.files) - 1, self.cur_idx)
+        #  cur_file = self.files[self.cur_idx]
+
+        source_path = os.path.join(self.target_dir, cur_file)
+        save_path = os.path.join(self.trash_dir, cur_file)
+
+        if os.path.exists(source_path):
+            cmd = f'mv "{source_path}" "{save_path}"'
+            os.system(cmd)
+
+        self.draw()
+        self.play()
+    
+    def last(self):
+        self.stop()
+        self.cur_idx = max(0, self.cur_idx - 1)
+
+        self.draw()
+        self.play()
+
+    def next(self):
+        self.stop()
+        self.cur_idx = min(len(self.files) - 1, self.cur_idx + 1)
+
+        self.draw()
+        self.play()
+
+    def draw(self):
+        win.erase()
+        win.addstr(3, 5, self.files[self.cur_idx])
+        win.addstr(5, 5, f'{self.cur_idx+1} / {len(self.files)}')
+        #  win.addstr(7, 5, '←（方向键左）： 播放上一个')
+        #  win.addstr(8, 5, '↓（方向键下）： 删除当前')
+        #  win.addstr(9, 5, '→（方向键右）： 播放下一个')
+        #  win.addstr(10, 5, 'q：退出')
+        win.refresh()
+
+    def getch(self):
+        return win.getch()
+
+    def loop(self):
+        self.draw()
+        while True:
+            key = self.getch()
+            self.key = key
+            if chr(key) == 'q':
+                self.exit()
+                break
+            elif key == 66:
+                self.delete()
+            elif key == 68:
+                self.last()
+            elif key == 67:
+                self.next()
+
+def dump(state_path, cleaner):
+    with open(state_path, 'wb') as f:
+        pickle.dump(cleaner, f, pickle.HIGHEST_PROTOCOL)
+
+def load(state_path):
+    with open(state_path, 'rb') as f:
+        cleaner = pickle.load(f)
+    return cleaner
+
+
+
+if __name__ == '__main__':
+    target_dir = sys.argv[-1]
+
+    if target_dir[-1] == '/':
+        target_dir = target_dir[:-1]
+
+    state_path = os.path.join(target_dir, 'state.pkl')
+
+    if os.path.exists(state_path):
+        cleaner = load(state_path)
+    else:
+        cleaner = CleanHelper(target_dir)
+    cleaner.loop()
+    dump(state_path, cleaner)

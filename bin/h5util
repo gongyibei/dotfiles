@@ -1,0 +1,17 @@
+#!python3 -O
+import os
+import h5py
+import sys
+
+def dfs(obj):
+    path = obj.file.filename[:-3] + obj.name
+    if isinstance(obj, h5py.Dataset):
+        with open(path, 'w') as f:
+            f.writelines(str(obj[()]))
+    else:
+        print(path)
+        os.makedirs(path, exist_ok=True)
+        for k in obj.keys():
+            dfs(obj[k])
+
+dfs(h5py.File(sys.argv[-1]))

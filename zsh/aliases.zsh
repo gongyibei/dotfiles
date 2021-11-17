@@ -49,7 +49,11 @@ common_aliases () {
     alias ss="export http_proxy=127.0.0.1:1087 https_proxy=127.0.0.1:1087"
     alias uss="unset http_proxy https_proxy"
 
+    alias ss1="export http_proxy=127.0.0.1:1194 https_proxy=127.0.0.1:1094"
+
     alias downgit="curl https://raw.githubusercontent.com/${0}" 
+
+    alias cntwav='ls -lR| grep "^-.*\.wav" | wc -l'
 
     alias cntfile='ls -l | grep "^-" | wc -l'
     alias cntfiles='ls -lR| grep "^-" | wc -l'

@@ -26,6 +26,7 @@ mac_install () {
     # fzf
     brew install fzf
     $(brew --prefix)/opt/fzf/install
+    brew install the_silver_searcher
 
     # privoxy
     brew install privoxy
@@ -51,9 +52,11 @@ linux_install () {
     # fzf
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
+    apt-get install silversearcher-ag
 
     # privoxy
     apt install privoxy
+
 
 }
 
