@@ -70,3 +70,15 @@ fs() {
     fzf --query="$1" --select-1 --exit-0) &&
   tmux switch-client -t "$session"
 }
+
+gpus() {
+    nvidia-smi --query-gpu=utilization.gpu,utilization.memory --format=csv | sed -n '2,$p'
+}
+
+gpu1() {
+    nvidia-smi --query-gpu=utilization.gpu,utilization.memory --format=csv | sed -n '2,2p'
+}
+
+gpu2() {
+    nvidia-smi --query-gpu=utilization.gpu,utilization.memory --format=csv | sed -n '3,3p'
+}

@@ -9,18 +9,18 @@ super + Return
 	
 
 # program launcher
-super + @space
+super + space
     rofi -show run -m -1
     # dmenu_run
-    
-super + shift + @space
+
+super + shift + space
     rofi -show drun -m -1
     # dmenu_run
 
 # make sxhkd reload its configuration files:
 super + Escape
-    xmodmap ~/.dotfiles/misc/.uxmodmap
-	pkill -USR1 -x sxhkd
+    xmodmap ~/.dotfiles/misc/.uxmodmap; \
+	pkill -USR1 -x sxhkd; \
     xmodmap ~/.dotfiles/misc/.xmodmap
 
 #
@@ -32,7 +32,7 @@ super + alt + Escape
 	bspc quit
 
 # close and kill
-super + {_,shift + }w
+super + {w, q}
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -74,6 +74,9 @@ super + button1
 # focus the node in the given direction
 super + {_,shift + , ctrl +}{h,j,k,l}
 	bspc node -{f,s,m} {west,south,north,east}
+
+# super + shift + ctrl + {h,j,k,l}
+#     bspc desktop -s {west,south,north,east}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}

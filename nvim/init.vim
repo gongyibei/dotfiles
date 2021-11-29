@@ -28,6 +28,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
+Plug 'chrisbra/Colorizer'
 Plug 'rbgrouleff/bclose.vim'
 " Plug 'francoiscabrol/ranger.vim'
 
@@ -38,7 +39,7 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'google/yapf' 
 Plug 'timothycrosley/isort'
 Plug 'heavenshell/vim-pydocstring'
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 " Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
@@ -367,9 +368,9 @@ call plug#end()
 " }}}
 
 " supertab{{{
-    " let g:SuperTabDefaultCompletionType = "context"
-    " let g:jedi#popup_on_dot = 0
-    " let g:SuperTabClosePreviewOnPopupClose = 1
+    let g:SuperTabDefaultCompletionType = "context"
+    let g:jedi#popup_on_dot = 0
+    let g:SuperTabClosePreviewOnPopupClose = 1
 " }}}
 
 

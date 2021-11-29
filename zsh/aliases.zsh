@@ -31,8 +31,10 @@ common_aliases () {
     alias lgg='leetcode show -gex -l golang'
     alias cdl='~/Project/leetcode/'
 
-    # pytora
+    # tytora
     alias typora="open -a typora"
+
+    alias dh="df -hT |grep -vE 'loop|tmpfs'"
 
     # using go in jupyter
     # alias jupyter-go-up='cd ~/Project/github/lgo/docker/jupyter/; ./up.sh; cd -'
