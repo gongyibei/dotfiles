@@ -63,7 +63,7 @@ Plug 'voldikss/vim-translator'
 " Plug 'vim-python/python-syntax'
 Plug 'rizzatti/dash.vim'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end() 
 

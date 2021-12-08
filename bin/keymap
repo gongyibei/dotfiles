@@ -1,3 +1,5 @@
 #!/bin/bash
+# xmodmap ~/.dotfiles/misc/.uxmodmap
+# pkill -USR1 -x sxhkd
 xmodmap ~/.dotfiles/misc/.xmodmap
 

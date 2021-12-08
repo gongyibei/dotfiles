@@ -16,3 +16,10 @@ export EDITOR=nvim
 
 export NEMU_HOME=/space/Project/ics2021/nemu
 export AM_HOME=/space/Project/ics2021/abstract-machine
+
+
+# dotbare
+export DOTBARE_DIR="$HOME/.dotfiles/.git"
+export DOTBARE_TREE="$HOME/.dotfiles"
+export DOTBARE_BACKUP="${XDG_DATA_HOME:-$HOME/.local/share}/dotbare"
+

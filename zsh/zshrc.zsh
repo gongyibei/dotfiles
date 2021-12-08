@@ -21,4 +21,7 @@ source ~/.dotfiles/zsh/.conda.zsh
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# dotbare
+source ~/.dotbare/dotbare.plugin.zsh
+
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
