@@ -136,10 +136,8 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
-include-file = ~/.config/polybar/modules-left.ini
-include-file = ~/.config/polybar/modules-center.ini
-include-file = ~/.config/polybar/modules-right-sys.ini
-include-file = ~/.config/polybar/modules-right-info.ini
-include-file = ~/.config/polybar/modules-right-menu.ini
+include-file = ~/.config/polybar/modules-sys.ini
+include-file = ~/.config/polybar/modules-misc.ini
+include-file = ~/.config/polybar/modules-menu.ini
 
 ; vim:ft=dosini

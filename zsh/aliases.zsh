@@ -2,7 +2,8 @@ common_aliases () {
     # dotfiles
     alias cdd='cd ~/.dotfiles/'
     alias eb='ranger ~/.dotfiles/bin/'
-    alias ed='ranger ~/.dotfiles/'
+    # alias ed='ranger ~/.dotfiles/'
+    alias ed='dotbare fedit'
 
     # blog
     alias wb='cd ~/blog/source/_posts/;nvim .'
