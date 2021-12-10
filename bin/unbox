@@ -1,0 +1,2 @@
+#!/bin/sh
+boxes -f ~/.dotfiles/boxes/boxes-config -d yibei -a c -s 66x3 -r

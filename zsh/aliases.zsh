@@ -44,6 +44,13 @@ common_aliases () {
     # connect to windows
     alias rd1='rdesktop -f -u Administrator -p 123456 10.22.76.49'
 
+    # fzf
+    # unalias z 2> /dev/null
+    # z() {
+    # [ $# -gt 0 ] && _z "$*" && return
+    # cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+    # }
+
     # other
     alias cman='man -M /usr/local/share/man/zh_CN'
     alias cnt='ls -lR| grep "^-" | wc -l'
@@ -62,6 +69,8 @@ common_aliases () {
     alias cntfiles='ls -lR| grep "^-" | wc -l'
     alias cntdir='ls -l | grep "^d" | wc -l'
     alias cntdirs='ls -lR| grep "^d" | wc -l'
+
+    
 
     # thefuck
     eval $(thefuck --alias)

@@ -466,10 +466,14 @@ call plug#end()
 " }}}
 "
 " boxes {{{
-    vmap <leader>mc !boxes -d  ukaii<CR>
-    nmap <leader>mc !!boxes -d ukaii<CR>
-    vmap <leader>xc !boxes -d  ukaii -r<CR>
-    nmap <leader>xc !!boxes -d ukaii -r<CR>
+    " vmap <leader>bb !boxes -d  tex-box -a c -s 66x3<CR>
+    " nmap <leader>bb !!boxes -d tex-box -a c -s 66x3<CR>
+    " vmap <leader>bu !boxes -d  tex-box -r -a c -s 66x3<CR>
+    " nmap <leader>bu !!boxes -d tex-box -r -a c -s 66x3<CR>
+    vmap <leader>bb !box<CR>
+    nmap <leader>bb !!box<CR>
+    vmap <leader>bu !unbox<CR>
+    nmap <leader>bu !!unbox<CR>
 " }}}
 
 

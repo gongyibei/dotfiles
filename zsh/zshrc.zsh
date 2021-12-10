@@ -24,4 +24,11 @@ source ~/.dotfiles/zsh/.conda.zsh
 # dotbare
 source ~/.dotbare/dotbare.plugin.zsh
 
+# autojump
+[[ -s /home/gyk/.autojump/etc/profile.d/autojump.sh ]] && source /home/gyk/.autojump/etc/profile.d/autojump.sh
+
+autoload -U compinit && compinit -u
+
+. ~/.dotfiles/zsh/z.sh
+
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

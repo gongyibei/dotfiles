@@ -1,0 +1,2 @@
+#!/bin/sh
+sox --multi-thread -S -n -r 16000 -c 1 -e signed-integer -b 16 outputfile.wav trim 0 ${1}:00
