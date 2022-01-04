@@ -1,0 +1,105 @@
+#!/usr/bin/python3 -u
+import os
+import sys
+import click 
+import functools
+
+
+RED  = functools.partial(click.style, fg='red')
+BLUE = functools.partial(click.style, fg='blue')
+
+class CountTree(object):
+    def __init__(self, path, pattern, level, deep):
+        self.path = os.path.abspath(path)
+        self.name = os.path.basename(self.path)
+        self.n = 0
+        self.childs= []
+        self.pattern = pattern
+        self.level = level
+        self.deep = deep
+        self._walk()
+
+    def _walk(self):
+        if self.deep == 0:
+            return 
+        for name in os.listdir(self.path):
+            path = os.path.join(self.path, name)
+            if os.path.isdir(path):
+                child = CountTree(path, self.pattern, self.level, self.deep - 1 )
+                self.childs.append(child)
+                self.n += child.n
+            elif path.endswith(f'.{self.pattern}'):
+                self.n += 1
+
+    def __str__(self):
+        n = RED(format(self.n, ','))
+        name = BLUE(self.name)
+        return f'({n}) {name}'
+    
+    def str(self):
+        _str = ''
+        def dfs(node, k, islast, prefix):
+            if k > self.level:
+                return ''
+            _str = ''
+            for i, child in enumerate(node.childs):
+                fmt = child.format()
+
+                if i == len(node.childs) - 1:
+                    s1, s2 = '└──', '   '
+                else:
+                    s1, s2 = '├──', '│  '  
+
+                prefix.append(s1)
+                pre = ' '.join(prefix)
+                prefix.pop()
+                _str += f'{pre} {fmt}\n'
+                prefix.append(s2)
+                _str += dfs(child, k + 1, True, list(prefix))
+                prefix.pop()
+            return _str
+
+        fmt = self.format()
+        _str += f'{fmt}\n'
+        return _str + dfs(self, 1, True, [])
+    
+    
+def print_tree(root):
+    def dfs(node, k, islast, prefix):
+        if k > root.level:
+            return 
+        for i, child in enumerate(node.childs):
+            if i == len(node.childs) - 1:
+                s1, s2 = '└──', '   '
+            else:
+                s1, s2 = '├──', '│  '  
+
+            prefix.append(s1)
+            pre = ' '.join(prefix)
+            prefix.pop()
+            print(f'{pre} {child}')
+            prefix.append(s2)
+            dfs(child, k + 1, True, list(prefix))
+            prefix.pop()
+
+    print(root)
+    dfs(root, 1, True, [])
+
+
+@click.command()
+@click.option('-p', '--pattern', 'pattern',  default='wav', type=str)
+@click.option('-l', '--level', 'level', default=1, type=int)
+@click.option('-d', '--deep', 'deep', default=-1,  type=int)
+@click.argument('director', default='.', metavar='[dir]', nargs=1)
+def main(pattern, level, deep, director):
+    click.echo('Config:')
+    click.echo(f'- Match pattern: {RED(pattern)}')
+    click.echo(f'- Print level:   {RED(level)}'  )
+    click.echo(f'- Search depth:  {RED(deep)}'   )
+    click.echo('\n')
+
+    root = CountTree(director, pattern, level, deep)
+    print_tree(root)
+
+if __name__ == '__main__':
+    main()

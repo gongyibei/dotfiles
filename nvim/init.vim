@@ -36,7 +36,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'jiangmiao/auto-pairs'
 "Plug 'sillybun/vim-autodoc'
 " 会与窗口切换冲突
-" Plug 'google/yapf' 
+Plug 'google/yapf' 
 Plug 'timothycrosley/isort'
 Plug 'heavenshell/vim-pydocstring'
 Plug 'ervandew/supertab'

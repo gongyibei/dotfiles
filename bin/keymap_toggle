@@ -1,0 +1,15 @@
+#!/bin/bash
+# xmodmap ~/.dotfiles/misc/.uxmodmap
+# pkill -USR1 -x sxhkd
+# xmodmap ~/.dotfiles/misc/.xmodmap
+
+TOGGLE=$HOME/.toggle
+if [ ! -e $TOGGLE ]; then
+    touch $TOGGLE
+    xmodmap ~/.dotfiles/misc/.xmodmap
+else
+    rm $TOGGLE
+    xmodmap ~/.dotfiles/misc/.uxmodmap
+fi
+
+
