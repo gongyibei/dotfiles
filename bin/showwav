@@ -9,5 +9,5 @@ elif [[ $# == 3 ]]; then
     ffmpeg -loglevel quiet -ss "$2" -t "$3" -i "$1" -lavfi "showwavespic=s=1080x240" tmp.png
 fi
 
-imgcat tmp.png
+showimg tmp.png 10 10 100 100
 rm ./tmp.png

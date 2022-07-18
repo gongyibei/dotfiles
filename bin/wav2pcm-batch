@@ -1,0 +1,6 @@
+#!/bin/bash
+for name in `ls *wav`; do
+    sox --multi-thread -S $name -r 16000 -b 16 -t raw  -c 1 -e signed-integer ${name%.wav}.pcm
+done
+
+

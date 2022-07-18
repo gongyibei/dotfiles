@@ -1,0 +1,39 @@
+#!/usr/bin/python3 -u
+import os
+import sys
+import click 
+import functools
+import random
+
+RED  = functools.partial(click.style, fg='red')
+BLUE = functools.partial(click.style, fg='blue')
+
+def mvtree(src_dir, pattern, batch):
+    src_dir = os.path.abspath(src_dir)
+    files = []
+
+    for file_name in os.listdir(src_dir):
+        if file_name.endswith(pattern):
+            files.append(os.path.join(src_dir, file_name))
+
+    
+    for i in range(0, len(files), batch)
+    
+
+
+@click.command()
+@click.option('-p', '--pattern', 'pattern',  default='npy', type=str)
+@click.option('-b', '--batch', 'batch',  default=10000, type=int)
+@click.option('-s', '--shuffle', 'shuffle',  default=True, type=bool)
+@click.argument('src', nargs=1)
+def main(src, pattern, batch, shuffle):
+    click.echo('Config:')
+    click.echo(f'- Src dir:  {RED(src)}')
+    click.echo(f'- Pattern:  {RED(pattern)}'   )
+    click.echo('\n')
+
+    mvgrp(src, pattern, batch)
+
+
+if __name__ == '__main__':
+    main()

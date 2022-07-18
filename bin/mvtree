@@ -1,0 +1,53 @@
+#!/usr/bin/python3 -u
+import os
+import sys
+import click 
+import functools
+
+RED  = functools.partial(click.style, fg='red')
+BLUE = functools.partial(click.style, fg='blue')
+
+def mvtree(src_dir, dst_dir, pattern, deep):
+    src_dir = os.path.abspath(src_dir)
+    dst_dir = os.path.abspath(dst_dir)
+    assert src_dir != dst_dir
+
+    paths = []
+    def walk(cur_dir, deep):
+        if deep == 0:
+            return 
+        for name in os.listdir(cur_dir):
+            path = os.path.join(cur_dir, name)
+            if os.path.isdir(path):
+                child = walk(path, deep - 1)
+            elif path.endswith(f'.{pattern}'):
+                dst_path = dst_dir + path[len(src_dir):]
+                paths.append([path, dst_path])
+
+    walk(src_dir, deep)
+    for src_path, dst_path in paths:
+        os.makedirs(os.path.dirname(dst_path), exist_ok=True)
+        
+        click.echo(f'{src_path} => {dst_path}')
+        cmd = f'mv {src_path} {dst_path}'
+        os.system(cmd)
+
+
+@click.command()
+@click.option('-p', '--pattern', 'pattern',  default='npy', type=str)
+@click.option('-d', '--deep', 'deep', default=-1,  type=int)
+@click.argument('src', nargs=1)
+@click.argument('dst', nargs=1)
+def main(src, dst, pattern, deep):
+    click.echo('Config:')
+    click.echo(f'- Src dir:  {RED(src)}')
+    click.echo(f'- Dst dir:  {RED(dst)}'  )
+    click.echo(f'- Pattern:  {RED(pattern)}'   )
+    click.echo(f'- Depth:    {RED(deep)}'   )
+    click.echo('\n')
+
+    mvtree(src, dst, pattern, deep)
+
+
+if __name__ == '__main__':
+    main()

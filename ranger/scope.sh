@@ -90,6 +90,16 @@ handle_extension() {
             lynx -dump -- "${FILE_PATH}" && exit 5
             elinks -dump "${FILE_PATH}" && exit 5
             ;; # Continue with next handler on failure
+        # HTML
+        # md)
+        #     # Preview as text conversion
+        #     unbuffer glow "${FILE_PATH}" && exit 5
+        #     # "${FILE_PATH}" && exit 5
+        #     ;; # Continue with next handler on failure
+        md|csv|ipynb)
+            # Preview as text conversion
+            rich "${FILE_PATH}" --force-terminal && exit 5
+            ;; # Continue with next handler on failure
     esac
 }
 
@@ -117,11 +127,11 @@ handle_image() {
             exit 7;;
 
         # Audio
-        # wav|pcm|mp3)
-        #     # ffmpeg -i "${FILE_PATH}" -filter_complex "showwavespic=s=1080x240" -frames:v 1 "${IMAGE_CACHE_PATH}" && exit 6
-        #     echo ${IMAGE_CACHE_PATH}
-        #     ffmpeg -i "${FILE_PATH}" -lavfi showspectrumpic "${IMAGE_CACHE_PATH}" && exit 6
-        #     exit 1;;
+        wav|pcm|mp3)
+            # ffmpeg -i "${FILE_PATH}" -filter_complex "showwavespic=s=1080x240" -frames:v 1 "${IMAGE_CACHE_PATH}" && exit 6
+            echo ${IMAGE_CACHE_PATH}
+            ffmpeg -i "${FILE_PATH}" -lavfi showspectrumpic "${IMAGE_CACHE_PATH}" && exit 6
+            exit 1;;
 
         # Video
         # video/*)

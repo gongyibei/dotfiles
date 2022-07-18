@@ -63,7 +63,7 @@ common_aliases () {
     alias ss="export http_proxy=127.0.0.1:1087 https_proxy=127.0.0.1:1087"
     alias uss="unset http_proxy https_proxy"
 
-    alias ss1="export http_proxy=127.0.0.1:1194 https_proxy=127.0.0.1:1094"
+    alias ss1="export http_proxy=127.0.0.1:2224 https_proxy=127.0.0.1:2224"
 
     alias downgit="curl https://raw.githubusercontent.com/${0}" 
 
@@ -74,6 +74,12 @@ common_aliases () {
     alias cntdir='ls -l | grep "^d" | wc -l'
     alias cntdirs='ls -lR| grep "^d" | wc -l'
     alias calc='gcalccmd'
+
+    # whale
+    alias wh=~/.whale/bin/whale
+
+    # xclip
+    alias clip='xclip -selection c'
 
     
 

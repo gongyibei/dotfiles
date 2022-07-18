@@ -13,11 +13,11 @@ def cptree(src_dir, dst_dir, pattern, deep):
 
     paths = []
 
-    def walk(src_dir, deep):
+    def walk(cur_dir, deep):
         if deep == 0:
             return 
-        for name in os.listdir(src_dir):
-            path = os.path.join(src_dir, name)
+        for name in os.listdir(cur_dir):
+            path = os.path.join(cur_dir, name)
             if os.path.isdir(path):
                 child = walk(path, deep - 1)
             elif path.endswith(f'.{pattern}'):

@@ -1,25 +1,25 @@
-function playmidi {
+# function playmidi {
 
-    SOUNDFONT='/usr/local/share/fluid-synth/sf2/TimGM6mb.sf2'
+#     SOUNDFONT='/home/gyk/.dotfiles/fluidsynth/TimGM6mb-MuseScore.sf2'
 
-    if [ -e "$SOUNDFONT" ]
-    then 
+#     if [ -e "$SOUNDFONT" ]
+#     then 
 
-        for i in "$@"
-        do 
-            if [ -e "$i" ]
-            then
-                (fluidsynth -i "$SOUNDFONT" "$i"  2>&1) >/dev/null
-            else
-                echo "[playmidi]: cannot find file at $i"   
-                return 1
-            fi  
-        done 
-    else
-            echo "[playmidi]: SOUNDFONT file not found at $SOUNDFONT"
-            return 1
-    fi  
-}
+#         for i in "$@"
+#         do 
+#             if [ -e "$i" ]
+#             then
+#                 (fluidsynth -a alsa -i "$SOUNDFONT" "$i"  2>&1) >/dev/null
+#             else
+#                 echo "[playmidi]: cannot find file at $i"   
+#                 return 1
+#             fi  
+#         done 
+#     else
+#             echo "[playmidi]: SOUNDFONT file not found at $SOUNDFONT"
+#             return 1
+#     fi  
+# }
 
 function fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then

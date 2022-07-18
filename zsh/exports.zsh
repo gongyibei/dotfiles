@@ -2,6 +2,7 @@
 export PATH=~/.dotfiles/bin/:$PATH
 export PATH=~/.iterm2/:$PATH
 export PATH=.:$PATH
+export PATH=/usr/local/go/bin:$PATH
 
 # homebrew mirror
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles

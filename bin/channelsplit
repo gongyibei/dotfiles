@@ -1,5 +1,6 @@
 #!/bin/sh
-for i in `seq 0 $[$1 - 1]`;do
+a=5
+for i in `seq 0 $[$a - 1]`;do
     echo $i
 done
 

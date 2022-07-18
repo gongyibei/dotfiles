@@ -11,6 +11,5 @@ elif [[ $# == 3 ]]; then
     ffmpeg -loglevel quiet -ss "$2" -t "$3" -i "$1" -lavfi "showspectrumpic=s=1080x240:legend=false" tmp2.png
 fi
 
-imgcat tmp1.png
-imgcat tmp2.png
+showimg tmp1.png 10 10 100 100
 rm ./tmp1.png ./tmp2.png

@@ -1,0 +1,6 @@
+#!/bin/bash
+for name in `ls *pcm`; do
+    /home/gyk/Project/vad/ns3/denoise $name ${name%.pcm}_ns3.pcm
+done
+
+
