@@ -1,7 +1,7 @@
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-export PATH=~/anaconda3/bin:$PATH
-eval "$(~/anaconda3/bin/conda shell.zsh hook)"
+export PATH=~/miniconda3/bin:$PATH
+eval "$(~/miniconda3/bin/conda shell.zsh hook)"
 
 # __conda_setup="$('/Users/swdy/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 # if [ $? -eq 0 ]; then
