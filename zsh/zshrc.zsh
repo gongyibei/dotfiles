@@ -5,6 +5,9 @@ source $ZSH/oh-my-zsh.sh
 # 环境变量
 source ~/.dotfiles/zsh/exports.zsh
 
+# boot up x-cmd.
+[ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X"
+
 # 插件
 source ~/.dotfiles/zsh/zplug.zsh
 
@@ -19,10 +22,12 @@ source ~/.dotfiles/zsh/misc.zsh
 source ~/.dotfiles/zsh/.conda.zsh
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
+
 
 # dotbare
-source ~/.dotbare/dotbare.plugin.zsh
+# source ~/.dotbare/dotbare.plugin.zsh
 
 # autojump
 [[ -s /home/gyk/.autojump/etc/profile.d/autojump.sh ]] && source /home/gyk/.autojump/etc/profile.d/autojump.sh
